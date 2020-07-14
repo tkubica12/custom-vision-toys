@@ -1,0 +1,28 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+    },
+    "variables": {
+        "cognitiveServicesName": "[concat('cognitiveservices-', uniqueString(resourceGroup().id))]",
+        "location": "[resourceGroup().location]"
+    },
+    "resources": [
+        {
+            "apiVersion": "2016-02-01-preview",
+            "name": "[variables('cognitiveServicesName')]",
+            "location": "[variables('location')]",
+            "type": "Microsoft.CognitiveServices/accounts",
+            "kind": "CognitiveServices",
+            "sku": {
+                "name": "S0"
+            },
+            "properties": {
+                "customSubDomainName": null,
+                "apiProperties": {
+                    "statisticsEnabled": false
+                }
+            }
+        }
+    ]
+}
